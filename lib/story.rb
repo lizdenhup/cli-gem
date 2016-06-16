@@ -1,3 +1,3 @@
 class Story
-  attr_accessor :title, :author, :summary 
+  attr_accessor :title
 end 
