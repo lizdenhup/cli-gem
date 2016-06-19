@@ -9,6 +9,7 @@ class Scraper
     front_page.encoding = 'utf-8'
     stories = []
 
+<<<<<<< HEAD
     story_item = front_page.css('.l_box')
     story_item.each do |item|
       # binding.pry 
@@ -17,6 +18,13 @@ class Scraper
       summary = item.css('.l_summary').first.children.text
 
       story = Story.new.tap { |s| s.title = title; s.link = link; s.summary = summary}
+=======
+    story_item = front_page.css('.l_title a')
+    story_item.each do |item|
+      title = item.text 
+      link = 'https://en.wikinews.org' + item.attributes['href'].value
+      story = Story.new.tap { |s| s.title = title; s.link = link}
+>>>>>>> 86f3a5fe2e963c8d38a3b71d187ccb5388dcae7f
       stories << story if story
       end 
       stories 
