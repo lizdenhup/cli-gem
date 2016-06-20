@@ -1,12 +1,16 @@
 require 'open-uri'
 require 'nokogiri'
 require 'pry'
+require 'openssl'
+
 require_relative './story.rb'
-class Scraper
+
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+class Scraper 
 
   def self.scrape_front_page(url)
-    front_page = Nokogiri::HTML(open(url).read, ssl_verify_mode: OPENSSL::SSL::VERIFY_NONE)
-    front_page.encoding = 'utf-8'
+    front_page = Nokogiri::HTML(open(url))
     stories = []
 
     story_item = front_page.css('.l_title a')
