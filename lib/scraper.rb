@@ -24,12 +24,8 @@ class Scraper
       stories << story if story
       end 
       stories 
-      binding.pry
   end
-
-
-
 
 end 
 
-Scraper.scrape_front_page("https://en.wikinews.org/wiki/Main_Page")
+# Scraper.scrape_front_page("https://en.wikinews.org/wiki/Main_Page")
