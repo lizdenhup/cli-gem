@@ -28,15 +28,13 @@ class CommandLineInterface
     puts "Would you like to find out more about a story?"
     puts "Enter a number 1-5 to find out more about that particular story."
     input = gets.strip
-    case input
-      when '1'
-      when '2'
-      when '3'
-      when '4'
-      when '5'
+      if input.to_i.between?(1..5)
+        puts story[input.to_i - 1].title + "\n"
+        # TODO write article scraper, call it here, display article text in terminal
       else 
-        puts "Input not valid. Please try again!"
-        self.more 
+        puts "Please try again, input not valid!"
+        self.more
+      end   
     end  
   end 
 
