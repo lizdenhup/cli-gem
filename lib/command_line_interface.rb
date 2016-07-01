@@ -30,6 +30,7 @@ class CommandLineInterface
     input = gets.strip
       if input.to_i.between?(1..5)
         puts story[input.to_i - 1].title + "\n"
+        # use scrape_front_page method to get the story url and then set the url in the scrape_article method
         # TODO write article scraper, call it here, display article text in terminal
       else 
         puts "Please try again, input not valid!"
