@@ -14,11 +14,11 @@ class Story
   def self.scrape_article(url)
     article = Nokogiri::HTML(open(url))
     article_headline = article.css('h1.firstHeading').text 
-    article_date = article.css('p .published').text 
-#    article_text = 
-  binding.pry
+#   article_date = article.css('p .published').text 
+    article_text = article.css('p').children.text
+#  binding.pry
   end 
 
 end 
 
-Story.scrape_article('https://en.wikinews.org/wiki/Suicide_bombers_attack_Istanbul%27s_Ataturk_airport')
+Story.scrape_article('https://en.wikinews.org/wiki/Messi_speaks_of_Argentina_exit_after_losing_Copa_Am%C3%A9rica_Centenario_over_penalties')

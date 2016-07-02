@@ -22,21 +22,22 @@ class CommandLineInterface
       puts story.summary + "\n"
       puts "---------"
     end 
+    self.more(input)
   end
 
-  def more
+  def more(input)
     puts "Would you like to find out more about a story?"
     puts "Enter a number 1-5 to find out more about that particular story."
     input = gets.strip
-      if input.to_i.between?(1..5)
-        puts story[input.to_i - 1].title + "\n"
-        # use scrape_front_page method to get the story url and then set the url in the scrape_article method
-        # TODO write article scraper, call it here, display article text in terminal
-      else 
-        puts "Please try again, input not valid!"
-        self.more
-      end   
-    end  
+    if input.to_i.between?(1..5)
+      puts story[input.to_i - 1].title + "\n"
+      url = story[input.to_i].link
+      story = Story.scrape_article(url)
+      puts article.text
+    else 
+      puts "Please try again, input not valid!"
+      self.more(input)
+    end   
   end 
 
 end
