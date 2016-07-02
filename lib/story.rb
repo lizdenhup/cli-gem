@@ -14,7 +14,7 @@ class Story
   def self.scrape_article(url)
     article = Nokogiri::HTML(open(url))
     article_headline = article.css('h1.firstHeading').text 
-    article_date = article.css('.value-title').text 
+    article_date = article.css('p .published').text 
 #    article_text = 
   binding.pry
   end 
