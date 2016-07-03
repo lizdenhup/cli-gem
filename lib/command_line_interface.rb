@@ -1,6 +1,7 @@
 require_relative "./scraper.rb"
 require_relative "./story.rb"
 require 'nokogiri'
+require 'pry'
 
 class CommandLineInterface
 
@@ -22,21 +23,23 @@ class CommandLineInterface
       puts story.summary + "\n"
       puts "---------"
     end 
-    self.more(input)
+    self.more
   end
 
-  def more(input)
+  def more
     puts "Would you like to find out more about a story?"
     puts "Enter a number 1-5 to find out more about that particular story."
     input = gets.strip
-    if input.to_i.between?(1..5)
-      puts story[input.to_i - 1].title + "\n"
-      url = story[input.to_i].link
+    stories = Scraper.scrape_front_page('https://en.wikinews.org/wiki/Main_Page')
+    if input.to_i.between?(1, 5)
+      puts stories[input.to_i - 1].title + "\n"
+      url = stories[input.to_i - 1].link
       story = Story.scrape_article(url)
-      puts article.text
+      puts story 
+      binding.pry 
     else 
       puts "Please try again, input not valid!"
-      self.more(input)
+      self.more
     end   
   end 
 

@@ -8,7 +8,7 @@ require_relative './scraper.rb'
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class Story
-  attr_accessor :title, :link, :summary, :text, :article_headline, :article_date
+  attr_accessor :title, :link, :summary, :article_headline, :article_date, :article_text 
 
 
   def self.scrape_article(url)
@@ -21,4 +21,4 @@ class Story
 
 end 
 
-Story.scrape_article('https://en.wikinews.org/wiki/Messi_speaks_of_Argentina_exit_after_losing_Copa_Am%C3%A9rica_Centenario_over_penalties')
+Story.scrape_article('https://en.wikinews.org/wiki/%2742-year_detour%27_ends:_Garrison_Keillor_homeward_bound')
