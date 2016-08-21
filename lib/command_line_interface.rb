@@ -10,7 +10,7 @@ class CommandLineInterface
     puts "Would you like to learn about today's news? [Y/n]"
     input = gets.strip.upcase
     if input == "Y"
-      self.scrape 
+      scrape 
     else 
       puts "Okay, maybe later."
     end 
@@ -23,20 +23,19 @@ class CommandLineInterface
       puts story.summary + "\n"
       puts "---------"
     end 
-    self.more
+    more
   end
 
   def more
     puts "Would you like to find out more about a story?"
     puts "Enter a number 1-5 to find out more about that particular story."
     input = gets.strip
-    stories = Scraper.scrape_front_page('https://en.wikinews.org/wiki/Main_Page')
     if input.to_i.between?(1, 5)
       puts stories[input.to_i - 1].title + "\n"
       url = stories[input.to_i - 1].link
       story = Story.scrape_article(url)
       puts story 
-      binding.pry 
+#     binding.pry 
     else 
       puts "Please try again, input not valid!"
       self.more

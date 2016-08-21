@@ -1,0 +1,2 @@
+describe Story do 
+end 
